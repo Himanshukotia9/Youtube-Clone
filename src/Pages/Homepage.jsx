@@ -1,3 +1,4 @@
+// Homepage.jsx
 import React, { useEffect } from 'react'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
@@ -11,6 +12,11 @@ export default function Homepage() {
   useEffect(() => {
     dispatch(getHomePageVideos(false));
   },[dispatch])
+
+  useEffect(() => {
+    // Log videos after state update
+    console.log(videos);
+  }, [videos]); // Re-run when videos state changes
 
   return (
     <div>

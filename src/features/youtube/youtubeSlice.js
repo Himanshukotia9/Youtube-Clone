@@ -1,8 +1,9 @@
+// youtubeSlice.js
 import { createSlice } from '@reduxjs/toolkit'
 import { getHomePageVideos } from '../../Store/reducers/getHomePageVideos'
 
 const initialState = {
-  video: [],
+  videos: [],
   currentPlaying: null,
   searchTerm: "",
   searchResults:[],
@@ -18,11 +19,13 @@ export const youtubeSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getHomePageVideos.fulfilled,(state,action) =>{
+      if(action.payload && action.payload.parsedData){
+        state.videos = action.payload.parsedData;
+        state.nextPageToken = action.payload.nextPageToken;
+      }
     })
   }
 })
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = youtubeSlice.actions
 
 export default youtubeSlice.reducer
