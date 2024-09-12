@@ -38,10 +38,10 @@ const parseVideoData = async(items) => {
         if(channelImage){
           parseData.push({
             videoId: item.id.videoId,
-            VideoTitle: item.snippet.title,
-            VideoDescription: item.snippet.description,
-            VideoThumbnail: item.snippet.thumbnails.medium.url,
-            VideoLink: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+            videoTitle: item.snippet.title,
+            videoDescription: item.snippet.description,
+            videoThumbnail: item.snippet.thumbnails.medium.url,
+            videoLink: `https://www.youtube.com/watch?v=${item.id.videoId}`,
             videoDuration: parseVideoDuration(
               videosData[index].contentDetails.duration
             ),

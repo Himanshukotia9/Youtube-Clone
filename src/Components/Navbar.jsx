@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaYoutube } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -6,20 +6,22 @@ import { BiSolidMicrophone } from "react-icons/bi";
 import { MdOutlineVideoCall } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa";
 import Avatar from 'react-avatar';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch,useAppSelector } from "../hooks/useApp"
 
 export default function Navbar() {
-    const [open, setOpen] = useState(true)
 
-    const toggleHandler = () => {
-        setOpen(!open)
-    }
+    const location = useLocation();
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const searchTerm = useAppSelector((state) => state.youtubeApp.searchTerm);
 
   return (
     <div className='flex top-0 justify-center items-center opacity-95 z-10 fixed w-full px-6 md:px-10 h-14 bg-white'>
         <div className='flex gap-8 justify-between w-full items-center text-2xl'>
             <div className='flex gap-4 items-center'>
                 <div>
-                    <button className='hover:bg-zinc-200 p-2 rounded-full'><GiHamburgerMenu onClick={toggleHandler}/></button>
+                    <button className='hover:bg-zinc-200 p-2 rounded-full'><GiHamburgerMenu /></button>
                 </div>
                 <div className='flex gap-2 items-center justify-center'>
                     <FaYoutube className='text-3xl text-red-600'/>
