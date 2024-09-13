@@ -16,11 +16,6 @@ export default function Homepage() {
     dispatch(getHomePageVideos(false));
   },[dispatch])
 
-  // useEffect(() => {
-  //   // Log videos after state update
-  //   console.log(videos);
-  // }, [videos]); // Re-run when videos state changes
-
   return (
     <div className='max-h-screen overflow-auto'>
       <div style={{height: "7.5vh"}}>

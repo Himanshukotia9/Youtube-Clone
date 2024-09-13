@@ -19,7 +19,7 @@ export default function Card({data}) {
                 <h3><a href="#" className='line-clamp-2'>{data.videoTitle}</a></h3>
                 <div className='text-sm text-gray-400'>
                     <div>
-                        <a href="#" className='hover:text-gray-600'>{data.channelInfo.name}</a>
+                        <a href="#" className='hover:text-gray-600 line-clamp-1'>{data.channelInfo.name}</a>
                     </div>
                     <div className='flex gap-1 items-center'>
                         <span>{data.videoViews} views</span>

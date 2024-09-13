@@ -7,7 +7,9 @@ import { MdOutlineVideoCall } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa";
 import Avatar from 'react-avatar';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { getSearchPageVideos } from '../Store/reducers/getSearchPageVideos';
 import { useAppDispatch,useAppSelector } from "../hooks/useApp"
+import { changeSearchTerm, clearVideos } from '../features/youtube/youtubeSlice';
 
 export default function Navbar() {
 
@@ -15,6 +17,14 @@ export default function Navbar() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const searchTerm = useAppSelector((state) => state.youtubeApp.searchTerm);
+
+    const handleSearch = () => {
+        if(location.pathname !== '/search') navigate('/search');
+        else{
+            dispatch(clearVideos);
+            dispatch(getSearchPageVideos(false));
+        }
+    };
 
   return (
     <div className='flex top-0 justify-center items-center opacity-95 z-10 fixed w-full px-6 md:px-10 h-14 bg-white'>
@@ -29,10 +39,12 @@ export default function Navbar() {
                 </div>
             </div>
             <div className='flex items-center justify-center gap-4'>
-                <form>
+                <form onSubmit={(e) => {e.preventDefault();
+                handleSearch();
+                }}>
                     <div className='flex items-center justify-center'>
                         <div className='flex items-center'>
-                            <input type="text" placeholder="Search" className="flex items-center w-44 md:w-96 rounded-l-full bg-transparent border border-gray-400 px-5 focus:border-gray-500"/>
+                            <input type="text" placeholder="Search" className="flex items-center w-44 md:w-96 rounded-l-full bg-transparent border border-gray-400 px-5 py-0.5 focus:border-gray-500 text-lg" value={searchTerm} onChange={e => dispatch(changeSearchTerm(e.target.value))}/>
                         </div>
                         <button className='py-1 px-3 rounded-r-full border border-gray-400 cursor-pointer'><AiOutlineSearch className='flex items-center'/></button>
                     </div>
