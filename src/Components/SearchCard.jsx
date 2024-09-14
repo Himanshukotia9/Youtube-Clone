@@ -14,20 +14,22 @@ export default function SearchCard({data}) {
         </div>
         <div className='flex gap-1 flex-col'>
             <h3 className='max-w-2xl'>
-                <a href="#" className='line-clamp-2'>  
-                    {data.videoTitle}
-                </a>
+            <Link to={`/watch/${data.videoId}`} className='line-clamp-2'>
+                {data.videoTitle}
+            </Link>
             </h3>
             <div className='text-xs text-gray-500'>
                 <div>
-                    <div>
-                        <span className="after:content-['•'] after:mx-1">
-                            {data.videoViews} views
-                        </span>
-                        <span>
-                            {data.videoAge}
-                        </span>
-                    </div>
+                    <Link to={`/watch/${data.videoId}`}>
+                        <div>
+                            <span className="after:content-['•'] after:mx-1">
+                                {data.videoViews} views
+                            </span>
+                            <span>
+                                {data.videoAge}
+                            </span>
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className='min-w-fit my-2'>
@@ -37,9 +39,11 @@ export default function SearchCard({data}) {
                 </a>
             </div>
             <div>
-                <div className='max-w-2xl line-clamp-2 text-sm text-gray-400'>
-                    <p>{data.videoDescription}</p>
-                </div>
+                <Link to={`/watch/${data.videoId}`}>
+                    <div className='max-w-2xl line-clamp-2 text-sm text-gray-400'>
+                        <p>{data.videoDescription}</p>
+                    </div>
+                </Link>
             </div>
         </div>
     </div>

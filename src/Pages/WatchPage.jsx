@@ -36,11 +36,11 @@ export default function WatchPage() {
             <div style={{height: "7.5vh"}}>
                 <Navbar/>
             </div>
-            <div>
+            <div className='ml-16 mt-8'>
                 <div>
                     <div>
-                        <div>
-                            <iframe src={`https://www.youtube.com/embed/${id}?autoplay=1`} frameborder="0" width={800} height={502} allowFullScreen title='youtube Player'></iframe>
+                        <div className=''>
+                            <iframe src={`https://www.youtube.com/embed/${id}?autoplay=1`} frameborder="0" width={800} height={502} allowFullScreen allow='autoplay' title='youtube Player' className='rounded-xl'></iframe>
                         </div>
                     </div>
                 </div>

@@ -19,16 +19,20 @@ export default function Card({data}) {
                 <a href="#"><img src={data.channelInfo.image} alt="Channel image" className='size-9 rounded-full'/></a>
             </div>
             <div className=''>
-                <h3><a href="#" className='line-clamp-2'>{data.videoTitle}</a></h3>
+                <Link to={`/watch/${data.videoId}`}>
+                    <h3><a href="#" className='line-clamp-2'>{data.videoTitle}</a></h3>
+                </Link>
                 <div className='text-sm text-gray-400'>
                     <div>
                         <a href="#" className='hover:text-gray-600 line-clamp-1'>{data.channelInfo.name}</a>
                     </div>
-                    <div className='flex gap-1 items-center'>
-                        <span>{data.videoViews} views</span>
-                        <RxDotFilled />
-                        <span>{data.videoAge}</span>
-                    </div>
+                    <Link to={`/watch/${data.videoId}`}>
+                        <div className='flex gap-1 items-center'>
+                            <span>{data.videoViews} views</span>
+                            <RxDotFilled />
+                            <span>{data.videoAge}</span>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>
