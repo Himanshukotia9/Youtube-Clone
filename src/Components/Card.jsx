@@ -1,5 +1,6 @@
 import React from 'react'
 import { RxDotFilled } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 export default function Card({data}) {
     console.log(data)
@@ -9,7 +10,9 @@ export default function Card({data}) {
             <span className='absolute bottom-3 right-3 text-sm bg-gray-900 text-white rounded-md opacity-85 px-2 py-0.5 z-10'>
                 {data.videoDuration}
             </span>
-            <img src={data.videoThumbnail} alt="Thumbnail" className='h-44 w-72 rounded-xl group-hover:rounded-none transition-all duration-300'/>
+            <Link to={`/watch/${data.videoId}`}>
+                <img src={data.videoThumbnail} alt="Thumbnail" className='h-44 w-72 rounded-xl group-hover:rounded-none transition-all duration-300'/>
+            </Link>
         </div>
         <div className='flex gap-2'>
             <div className='min-w-fit'>
